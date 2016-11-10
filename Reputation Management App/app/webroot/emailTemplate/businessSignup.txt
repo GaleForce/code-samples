@@ -1,0 +1,8 @@
+<!--@business signup email@-->
+<!--@vars business_name@-->
+<table>
+   <tr>
+   <td> Hello,</td></tr>
+   <tr><td>You are successfully registered ,your Business Account as $business_name.</td></tr>
+   <tr><td>Thank You.</td></tr>
+</table>

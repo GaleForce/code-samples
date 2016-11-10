@@ -1,0 +1,204 @@
+/**
+ * fetch-factual.js
+ *
+ * Class with core fetch factual methods.
+ * @class fetchFactual
+ */
+
+function fetchFactual() {
+	/** check results for error message
+	 *
+	 * @param {JSON} rjs results returned from factual query
+	 * @param {object} actF active fetchFactual object
+	 */
+	this.checkResults = function (rjs, actF) {
+		if (rjs.res_err['res_err_stat'] === true) {
+			ffAlert("error", rjs.res_err['res_err_msg']);
+			// return;
+		} else {
+			actF.returnPlaces(rjs, actF);
+		}
+	}
+
+	/**
+	 * Display succesful context query results.
+	 * @param {JSON} rjs response from a context query
+	 * @param {object} actF active fetchFactual object
+	 */
+	this.returnPlaces = function (rjs, actF) {
+		var rNum = 0;
+		var adr = "<ul>";
+		var cids = [];
+		var idar = "";
+		[4,5,14,17,272];
+		
+		/** ids of categories to be shown */
+		// var catIds = {
+		// 4: "Car Dealers &amp; Leasing",
+		// 5: "Used Car Dealers &amp; Leasing",
+		// 14: "Motorcycles, Mopeds &amp; Scooters",
+		// 17: "RVs &amp; Motor Homes",
+		// 272: "Insurance"
+		// };
+
+		var catIds = {
+		4: "Car Dealers &amp; Leasing",
+		5: "Used Car Dealers &amp; Leasing",
+		14: "Motorcycles, Mopeds &amp; Scooters",
+		17: "RVs &amp; Motor Homes"
+		};
+
+		var catColors = {
+		4: "#69D2E7",
+		5: "#E0E4CC",
+		14: "#F38630",
+		17: "#96CE7F"
+		};
+		
+		/** counts # of pages in query results */
+		for (property in rjs)
+		{
+		   if (rjs.hasOwnProperty(property))
+		   {
+			  rNum++;
+		   }
+		}
+		
+		for (var n=0;n<rNum;n++) {
+			var t = 0;
+			for ( property in rjs[n] )
+			{
+				if (rjs[n].hasOwnProperty(property))
+				{
+					t++;
+				}
+			}
+			for (var c=0;c<t;c++) {
+				if (typeof(rjs[n][c].name) != "undefined") {
+				
+					if (typeof(rjs[n][c].category_ids) != "undefined") {
+						
+						tid = rjs[n][c].category_ids;
+						for (key in catIds) {
+							if (tid == key) {
+								if (cids[tid] >= 1 ) {
+									cids[tid] += 1;
+								} else {
+									cids[tid] = 1;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		var mydoughOps = {animation: true,};
+		var mydoughData = [{
+				value : cids[4],
+				color : catColors[4]
+			},{
+				value : cids[5],
+				color : catColors[5]
+			},{
+				value : cids[14],
+				color : catColors[14]
+			},{
+				value : cids[17],
+				color : catColors[17]
+			}];
+
+		var wpChartmydoughDoughnut = new Chart(document.getElementById("mydough").getContext("2d")).Doughnut(mydoughData,mydoughOps);
+		
+		
+		// alert(cids.length);
+		var rHtm = "";	// string to store html list of results
+		
+		/** generates html list to return */
+		for (key in catIds) {
+			cVal = "-";
+			
+			if (cids[key] >= 1) {
+				cVal = cids[key];
+			} else {
+				cVal = "-";
+			}
+			rHtm += '<li name="ff-cat-'+key+'" class="ff-cat-res"><div class="ff-cat-swatch" style="background:'+catColors[key]+';"></div><div id="ff-cat-'+key+'" class="ff-cat-count">'+cVal+'</div>'+catIds[key]+'</li>';
+			
+			
+			
+			// idar += key+":"+cids[key]+"<br>";
+			// $("#ff-cat-"+key).html(cids[key])
+		}
+		jQuery("#ff-cat-res-list").html(rHtm);
+		// alert(cids[1]);
+		jQuery("#ff-demographics").html(idar);
+		
+		// alert(rjs[0][1].address);
+		jQuery.each(rjs, function(key, value) {
+			alert(i);
+		});
+	}
+
+	/**
+	 * Display succesful context query results.
+	 * @param {JSON} rjs response from a context query
+	 * @param {object} actF active fetchFactual object
+	 */
+	this.returnContext = function (rjs, actF) {
+		
+		/** populate area statistics section */
+		var asd = rjs.demographics.area_statistics;
+		var asu = $("ul", "#ff-area-statistics");
+		var asItems = [];	
+
+		createLI("pop-density-score", asd['population_density_score']);
+		createLI("population", asd['population']);
+		createLI("sq-meters", asd['square_meters']);
+		
+		asu.html(asItems.join(""));
+		
+		function createLI(title, val) {
+			var lid = title.replace(/\_/g, "-");
+			var lit = title.replace(/\-/g, " ");
+			lit = lit.replace("and", "&amp;");
+			
+			asItems.push("<li id='ff-"+lid+"'>"+lit+": "+val+"</li>");
+		}
+			
+	}
+
+	
+	/**
+	 * Submit factual query.
+	 * @param {serialized} serialized location data
+	 * @param {object} actF active fetchFactual object
+	 */
+	this.factualQuery = function (qData, actF) {
+		ffAlert("fetch", false, -1);
+		/** Testing */
+		// alert(qData);
+
+		jQuery.ajax({
+			type: "POST",
+			url: "/wp-content/plugins/fetch-factual/library/factual.php",
+			data: qData,
+			success: function(response, textStatus, xhr) {
+				ffAlert("success", false, 3000);
+				
+				/** DEBUGGING */
+				// alert(response.length);
+				// alert(response);
+				// $("#ff-area-statistics").html(response);
+				
+				var tresp = jQuery.trim(response);			
+				var resp = JSON.parse(tresp);
+				// return resp;
+				actF.checkResults(resp, actF);
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				ffAlert("error", errorThrown);
+			}
+		});
+	}
+}

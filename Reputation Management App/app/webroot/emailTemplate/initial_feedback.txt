@@ -1,0 +1,11 @@
+<!--@subject Initial Feedback@-->
+<!--@vars customername, reviewurl, customeremail@-->
+<table>
+   <tr>
+   <td>Dear $cusotmername,</td></tr>
+   <tr><td>Thank You for allowing to serve you</td></tr>
+    		   <tr><td>We are constantly striving to deliver an outstanding experience for our customers and would value your feedback about your recent experience </td></tr>
+    		   <tr><td>Would you be willing to take 15 seconds to tell us about your experience ? if so,please click this link</td></tr>
+    		   <tr><td><a href=$reviewurl>Click here to Complete your Review.</a></td></tr>
+   <tr><td>Thank You.</td></tr>
+</table>

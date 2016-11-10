@@ -1,0 +1,12 @@
+<!--@subject Negative Feedback@-->
+<!--@vars customername,customeremail@-->
+<table>
+  <tr>
+  <td>Dear $cusotmername,</td></tr>
+  <tr>
+   <td>Thank you so much for taking the time to let us know about your recent experience at MARKETING.</td></tr>
+  <tr><td>Our goal is always exceed our customer expectations.unfortunatly , sometime we fall sort, it is only through your comments that we have the oppourtunity  to recognise a situation that to be improved.i am taking steps to correction immidiatly.</td></tr>
+    <tr><td>i would like the opprtunity to try to earn back to your trust may i offer to thank you gift to entice you to contact with us. again</td></tr>
+    <tr><td>if so please respond to my direct contactinfo below so i can make arrangement with you.</td></tr>
+    
+   </table>

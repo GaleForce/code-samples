@@ -1,0 +1,189 @@
+jQuery(document).ready(function($)
+{
+	$("#item_list_form").html('');
+	
+	file_alert_msg('');
+	item_alert_msg('');
+
+	$("form#choose_file_form").submit(function(e) {
+		e.preventDefault();
+		
+		$("#tag_list_form").html('');
+		$("#item_list_form").html('');
+		$("#item_result_info").html('');
+		$("#item_info_cont").html('');
+		var file_name = $("#file_name").val();
+		file_alert_msg('Loading '+file_name+'...');
+		load_the_file(file_name);
+	});
+	
+	$("#file_name").keypress(function() {
+		file_alert_msg('');
+	});
+
+	$("form#tag_list_form").change(function() {
+		$("#item_list_form").html('');
+		item_alert_msg('');
+		$("#item_result_info").html('');
+		$("#item_info_cont").html('');
+		
+		item_alert_msg('Loading item list...');
+		
+		var tag = $("#tag_list").val();
+		var tag_file = $("#tag_list_file").val();
+		get_items_dropdown(tag, tag_file);
+	});
+	
+	$("form#item_list_form").change(function() {
+		$("#item_info_cont").html('');
+		$("#item_result_info").html('');
+		
+		item_alert_msg('Loading info...');
+		
+		var item = $("#item_list").val();
+		var item_file = $("#item_list_file").val();
+		var item_file = $("#item_list_tag").val();
+		get_item_info(item, item_file);
+	});
+
+}); // end document ready
+
+
+function file_alert_msg(str = '')
+{
+	$("#file_alert").html(str);
+}
+
+
+function item_alert_msg(str= '')
+{
+	$("#item_alert").html(str);
+}
+
+
+function get_item_info(item = '', item_file = '')
+{
+	if("" == item_file)
+	{
+		item_alert_msg('Item reference file not found.');
+		return;
+	} else if("" == item) {
+		item_alert_msg('Invalid item selected.');
+		return;
+	}
+
+	var the_data = $("form#item_list_form").serializeArray();
+
+	$.ajax({
+		type: "POST",
+		global: false,
+		url: "get-item-info.php",
+		data: the_data,
+		success: function(response, textStatus, xhr) {
+			/** DEBUGGING */
+			// alert(textStatus);
+			// alert(response);
+			
+			var tresp = jQuery.trim(response);			
+			var resp = JSON.parse(tresp);
+			item_alert_msg('');
+
+			if (resp.res_err['res_err_stat'] === true) {
+				item_alert_msg(resp.res_err['res_err_msg']);
+			} else {
+				$("#item_result_info").html('Showing details from <a href="'+resp['file']+'">'+resp['file']+'</a> where '+resp['tag']+' = '+resp['item']);
+				$('#item_info_cont').html(resp['info']);
+			}
+			
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			item_alert_msg('Response Error: '+errorThrown);
+		}
+	});
+}
+
+
+function get_items_dropdown(tag = '', tag_file = '')
+{
+	if("" == tag_file)
+	{
+		item_alert_msg('Reference file not found.');
+		return;
+	} else if("" == tag) {
+		item_alert_msg('Invalid tag selected.');
+		return;
+	}
+	
+	var the_data = $("form#tag_list_form").serializeArray();
+	
+	$.ajax({
+		type: "POST",
+		global: false,
+		url: "get-items.php",
+		data: the_data,
+		success: function(response, textStatus, xhr) {
+			/** DEBUGGING */
+			// alert(textStatus);
+			// alert(response);
+			
+			var tresp = jQuery.trim(response);			
+			var resp = JSON.parse(tresp);
+			item_alert_msg('');
+
+			if (resp.res_err['res_err_stat'] === true) {
+				item_alert_msg(resp.res_err['res_err_msg']);
+			} else {
+				$('#item_list_form').html(resp['opts']);
+				$('#item_list_form').prepend('\n\t<input type="hidden" id="item_list_tag" name="item_list_tag" value="'+resp['tag']+'">');
+				$('#item_list_form').prepend('\n\t<input type="hidden" id="item_list_file" name="item_list_file" value="'+resp['file']+'">');
+			}
+			
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			item_alert_msg('Response Error: '+errorThrown);
+		}
+	});
+}
+
+
+function load_the_file(file)
+{
+	if("" == file)
+	{
+		file_alert_msg('An XML filename must be provided.');
+		return;
+	} else if(".xml" != file.substring(file.length -4) || 5 > file.length) {
+		file_alert_msg('Invalid filename.');
+		return;
+	}
+	
+	var the_data = $("form#choose_file_form").serializeArray();
+	
+	$.ajax({
+		type: "POST",
+		global: false,
+		url: "load-file.php",
+		data: the_data,
+		success: function(response, textStatus, xhr) {
+			/** DEBUGGING */
+			// alert(textStatus);
+			// alert(response);
+
+			var tresp = jQuery.trim(response);			
+			var resp = JSON.parse(tresp);
+			
+			file_alert_msg('');
+
+			if (resp.res_err['res_err_stat'] === true) {
+				file_alert_msg(resp.res_err['res_err_msg']);
+			} else {
+				$('#tag_list_form').html(resp['opts']);
+				$('#tag_list_form').prepend('\n\t<input type="hidden" id="tag_list_file" name="tag_list_file" value="'+resp['file']+'">');
+			}
+			
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			file_alert_msg('Response Error: '+errorThrown);
+		}
+	});
+}

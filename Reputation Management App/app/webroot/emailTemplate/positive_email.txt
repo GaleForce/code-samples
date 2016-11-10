@@ -1,0 +1,11 @@
+<!--@subject Positive Email@-->
+<!--@vars customername, google, customeremail@-->
+<table>
+      <tr>
+      <td>Dear $business_name,</td></tr>
+      <tr>
+       <td>You have got review by $cusotmername !</td></tr>
+      
+        
+        
+       </table>;

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="OrgoByte Interview Logger Tool overhauled and easier than ever to use.">
+    <meta name="author" content="Leonard Moscowitz for OrgoByte.com">
+    <!--<link rel="icon" href="favicon.ico">-->
+
+    <title>OrgoByte.com Interview Logger Tool</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/narrow-jumbotron.css" rel="stylesheet">
+    <link href="css/custom-styles.css?version=1.3" rel="stylesheet">
+
+    <!-- Core JS and JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- Custom JS Includes -->
+	<script src="js/age-calc.js"></script>
+	<script src="js/jquery.twbsPagination.min.js"></script>
+	<script src="js/select-question.js?version=1.0"></script>
+	<script src="js/grading.js?version=1.2"></script>
+	<script src="js/simple-stopwatch.js?version=1.1"></script>
+	<script src="js/forum-post-generator.js?version=1.7"></script>
+	<script src="js/parsley.min.js"></script>
+	
+  </head>
+
+  <body>
+
+    <div class="container">
+    <!-- HEADER HIDDEN  <div class="header clearfix">
+        <!--<nav>
+          <ul class="nav nav-pills pull-xs-right">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </nav> 
+        <h3 class="text-muted">Interview Logger</h3>
+      </div> -->
+	  
+	  
+	  <!-- Pagination Work in Progress -->
+	  <!--<div class="text-center">
+	  <nav aria-label="...">
+		<ul id="pargination" class="pagination pagination-lg"></ul>
+	</nav>
+	</div>-->
+	
+		<br>
+      <div class="jumbotron jumbo-top">
+        <h1>OrgoByte Interview Logger Tool</h1>
+        <p class="lead"><strong>Say this before starting the interview:</strong></p>
+		<p class="lead">To conduct your interview, I need you to link me your profile and your accepted Civilian Application. You are not to be looking at the rules. If you are caught, you will be denied and banned for 3 months.</p>
+		<p class="lead">You are not to record or make note of this interview in any way shape or form. Do not discuss the interview with anyone. If you are caught doing so, you will be denied and permanently banned.</p>
+		<p class="lead">You are not to be on the forums. If you are, can you please sign out now?</p>
+		<p class="lead">If you fail your interview, the decision is final. You will have to wait 3 days. If you then fail again, it's 1 week before you can come back for your interview.</p>
+      </div>
+	
+	<form action="https://script.google.com/macros/s/AKfycbz3ywJ6Q6TOpRSOqfmRObqIvwCFY1g_2JSqbvm0Ee9hCaanpvnd/exec" method="POST" id="interview-logger" data-parsley-validate>
+
+		<div class="bs-callout bs-callout-default callout-orgo">
+		<h4>What is your name?</h4>
+			<div class="form-group">
+				<label for="interviewer">Before you get started, please enter your name</label>
+				<input required type="text" class="form-control" name="interviewer" id="interviewer" placeholder="Interviewer's Name">
+			</div>
+		</div>
+						 
+		<!-- PERSONAL INFORMATION QUESTIONS -->
+		<h2>Personal Information Questions</h2>
+		
+		<div class="form-group">
+			<label for="rpName">Roleplay Name</label>
+			<input required type="text" class="form-control" name="rpName" id="rpName" placeholder="Name">
+		</div>
+		
+		<div class="form-group">
+			<label for="dob">Date of Birth</label>
+			<input required type="date" class="form-control" name="dob" id="dob" placeholder="Date of Birth" onchange="submitBday()">
+		</div>
+		
+			<!-- Alert For Date of Birth -->
+		
+			<div class="alert alert-warning" role="alert" id="dobAlert" style="display:none;">
+				<strong><span id="resultBday"></span></strong> This is a reference against what is stated in the interview.
+			</div>
+	
+		<div class="form-group">
+			<label for="forumProfile">Forum Profile URL</label>
+			<input required type="text" class="form-control" id="forumProfile" name="forumProfile" placeholder="Forum Profile URL">
+		</div>
+		
+		<!--              FORUM IP ALERT TOOL              -->
+		<!-- Hiding code for now until feature is complete -->  
+
+			<!-- Alerts for Forum Login
+		  	<p><em>Please ignore the red and green alert, for now. This feature does not yet work. You will need to check the forum profile to make sure the user isn't logged in.</em></p>
+			<div class="alert alert-success" role="alert">
+				<strong>Not logged in!</strong> This user is not logged into the forum under any account.
+			</div>
+			
+			<div class="alert alert-danger" role="alert">
+				<strong>Logged In!</strong> This user is logged into the forum.
+			</div> -->
+
+		<!-- End hidden code for IP tool -->
+		  
+		<div class="form-group">
+			<label for="civApp">Civilian Application URL</label>
+			<input required type="text" class="form-control" id="civApp" name="civApp" placeholder="Civilian Application URL">
+		</div>
+
+		<div class="form-group">
+			<label for="steamID">Steam ID (Arma Player ID)</label>
+			<input required type="text" class="form-control" id="steamID" name="steamID" placeholder="SteamID64">
+		</div>
+		
+		<div class="form-group">
+			<label for="location">Location</label>
+			<input required type="text" class="form-control" id="location" name="location" placeholder="Country">
+		</div>
+		
+		<div class="form-group">
+			<label for="language">Primary Language</label>
+			<select class="form-control" id="language" name="language">
+				<option value="English">English</option>
+				<option value="other">Other</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="referral">How did you find out about OrgoByte?</label>
+			<input type="text" class="form-control" id="referral" name="referral" placeholder="Referral Information">
+		</div>
+		
+		<div class="form-group">
+			<label for="disability">Do you have any form of disability which affects your gameplay, ability to communicate, or similar that you are willing to disclose at this time?</label>
+			<fieldset class="form-group-radio">
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="disability" id="disabilityNo" value="no">
+							No
+						</label>
+					</div>
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="disability" id="disabilityYes" value="yes">
+							Yes
+						</label>
+					</div>
+		</div>
+		
+		 <div class="form-group">
+			<label for="disabilityDocument">If Yes, please document here.</label>
+			<textarea class="form-control" id="disabilityDocument" name="disabilityDocument" rows="2"></textarea>
+		 </div>
+		
+		<!-- INTERVIEW TIMER -->
+
+		<div class="row">
+			<div class="col-sm-6 offset-sm-3">
+				<div class="card card-block card-timer">
+					<h3 class="card-title">Interview Timer</h3>
+					<p class="card-text">Please make sure to start the timer as the time will be logged as a reference.</p>
+						<div class="stopwatch"></div>
+						<input type="text" size="12" class="swFormat" id="swOutput" name="swOutput" value="00 : 00 : 00" /><br>
+						<button type="button" class="btn btn-primary btn-lg start-button" id="startStop" value="start" onclick="stopwatch(this.value);timeStamp();">Start Interview</button>
+						<button type="button" class="btn btn-secondary reset-button" value="Reset" onClick="resetSW();">Reset Timer</button>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Pagination Work in Progress -->
+	  <!--
+	  <div class="text-center">
+	  <nav aria-label="...">
+		<ul class="pagination pagination-lg">
+			<li class="page-item">
+				<a class="page-link" href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				<span class="sr-only">Previous</span>
+				</a>
+			</li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item">
+				<a class="page-link" href="#" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+				<span class="sr-only">Next</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	</div> -->
+	
+		  
+		  <!-- START INTERVIEW QUESTIONS -->
+
+		<h2>Interview Questions</h2>
+		<br>
+		<div class="alert alert-info-gray" role="alert">These right and wrong answers are guidelines. Follow your gut on what you consider to be “elite” roleplay. Just because they do not give the correct or incorrect answers does not mean they should pass or fail the interview. Make judgment calls. Interviews are to see if they are good fits for our community, not a numbers game on how many questions they get wrong or right.<br><br>The text fields are here for you to record any notes on their answers. This data gets stored for later reference. In order to use the automatic grading tool at the end, you <strong>must</strong> at least mark each question as either correct, incorrect, or partial credit (gives half credit).</div>
+		<!-- 1 QUESTION 1 -->
+		
+  		 <div class="form-group">
+			<label for="eliteRP">What is the difference between roleplay and elite roleplay? Outside of never breaking character, what makes our server different in terms of "elite roleplay?"</label>
+				<textarea class="form-control" id="eliteRP" name="eliteRP" rows="3"></textarea>
+					<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio1" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio1" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio1" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer1" aria-expanded="false" aria-controls="showAnswer1">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer1">
+					<p>Roleplay is just hopping on and acting as a character, which can change from day-to-day. Elite roleplay is focused more on long-term storylines and in-depth character growth. They need to reflect this in their answer; it's more than just staying in-character.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 2 QUESTION 2 -->
+		 
+		 <div class="form-group">
+			<label for="rpOver">Explain "roleplay over ruleplay" in your own words. If we say we are a "roleplay over ruleplay" server, what does that mean for everyone?</label>
+				<textarea class="form-control" id="rpOver" name="rpOver" rows="3"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio2" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio2" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio2" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer2" aria-expanded="false" aria-controls="showAnswer2">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer2">
+					<p>Something that follows along the lines of the definition on the rules: valuing roleplay over following the rules (either serverwide or Standard Operating Procedures) to the letter for the greater purpose of a story and which enriches everyone's involvement in the roleplay; this includes skirting the rules and not contributing to roleplay because the rules do not specify a situation exactly.</p>
+				</div>
+		 </div>
+		 
+		 <div class="alert alert-warning" role="alert">If they got <strong>both</strong> of the first two questions wrong, end the interview. They have failed.</div>
+		 
+		 <!-- 3 QUESTION 3 -->
+		 
+		 <div class="form-group">
+			<label for="staffHierarchy">Can you explain what the staff hierarchy is used for?</label>
+				<textarea class="form-control" id="staffHierarchy" name="staffHierarchy" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio3" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio3" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio3" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer3" aria-expanded="false" aria-controls="showAnswer3">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer3">
+					<p>To know which staff member to bring a particular issue to beginning with the lowest rank.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 4 QUESTION 4 -->
+		 
+		 <div class="form-group">
+			<label for="battleEye">You get kicked from the server for a BattleEye issue. You're frustrated, because you were in a roleplay situation. You start messaging in-game admins about the issue to report it, and when nobody responds, you start posting in the shoutbox. What did you do wrong?</label>
+				<textarea class="form-control" id="battleEye" name="battleEye" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio4" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio4" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio4" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer4" aria-expanded="false" aria-controls="showAnswer4">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer4">
+					<p><strong>Correct:</strong> Broke the chain of command. You go to Waiting for Support and let a Support Team member go to you.<br><strong>Incorrect:</strong> Nothing</p>
+				</div>
+		 </div>
+		 
+		 <!-- 5 QUESTION 5 -->
+		 
+		 <div class="form-group">
+			<label for="firstContact">Who is your first point of contact with staff when you have ANY issue, no matter how big or small?</label>
+				<textarea class="form-control" id="firstContact" name="firstContact" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio5" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio5" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio5" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer5" aria-expanded="false" aria-controls="showAnswer5">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer5">
+					<p>Support Team.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 6 QUESTION 6 -->
+		 
+		 <div class="form-group">
+			<label for="bugReport">If you find a bug on the server, what do you do?</label>
+				<textarea class="form-control" id="bugReport" name="bugReport" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio6" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio6" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio6" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer6" aria-expanded="false" aria-controls="showAnswer6">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer6">
+					<p>Report it on the forums using the bug template in the Arma 3: Humanity folder</p>
+				</div>
+		 </div>
+		 
+		 <!-- 7 QUESTION 7 -->
+		 
+		 <div class="form-group">
+			<label for="pointBlank">Someone just point-blank shoots you for no reason. What would you do? Who is initiated into the roleplay with you the moment you're downed?</label>
+				<textarea class="form-control" id="pointBlank" name="pointBlank" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio7" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio7" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio7" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer7" aria-expanded="false" aria-controls="showAnswer7">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer7">
+					<p>Make note of the time, gather evidence, and report RDM on the forums.<br>The medic.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 8 QUESTION 8 -->
+		 
+		 <div class="form-group">
+			<label for="greenZone">What is the purpose of a green zone? Can you give two examples of green zones that are listed in the rules?</label>
+				<textarea class="form-control" id="greenZone" name="greenZone" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio8" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio8" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio8" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer8" aria-expanded="false" aria-controls="showAnswer8">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer8">
+					<p>
+					Green zones are crime-free areas, where no initiation can occur for hostile acts, with the exception of trolling in a green zone, which can initiate hostile roleplay.
+					<ul>
+						<li>ATMs</li>
+						<li>NPCs</li>
+						<li>EMS</li>
+						<li>Debug Island</li>
+					</ul>
+					</p>
+				</div>
+		 </div>
+		 
+		 <!-- 9 QUESTION 9 -->
+		 
+		 <div class="form-group">
+			<label for="saveHumanity">A heated argument between you and your archenemy has resulted in your death. You want revenge. What would you do when revived?</label>
+				<textarea class="form-control" id="saveHumanity" name="saveHumanity" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio9" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio9" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio9" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer9" aria-expanded="false" aria-controls="showAnswer9">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer9">
+					<p><strong>Correct:</strong> Follow Save Humanity Rule. They need to elaborate on what that is.
+					<ul>
+						<li>You must not return within 500m of where you died while any gunfight is still in progress. 15 minutes after the gunfight, you may return to that place. Being revived by a medic does not allow you to remember the whole RP scenario and thus you must vacate the area (500m).</li>
+						<li>If revived by a fellow citizen, you may remember the RP scenario but still cannot revenge kill or re-engage in hostile RP with the people involved in the scene. It is your responsibility to know who is hostile and who isn’t.</li>
+						<li>Save Humanity Rule only applies if you are revived by a medic.</li>
+						<li>If you respawn, you then get a “new life,” but under no circumstances are you to return the scene of your previous death or are you to remember any of the Roleplay that lead up to your previous death.</li>
+						<li>Once someone is revived, they cannot be re-engaged in hostile roleplay by the same people.</li>
+						<li>Medics are technically a green zone, as the area is cleared by the time they are reviving or healing people.</li>
+					</ul>
+					<strong>Incorrect:</strong> Get up and start shooting them or re-initiate RP.
+					</p>
+				</div>
+		 </div>
+		 
+		 <!-- 10 QUESTION 10 -->
+		 
+		 <div class="form-group">
+			<label for="friendRobbed">You’re driving, and you see your friend being robbed on the side of the road. You were alerted via radio by your friend that it was happening, and you have the perfect chance to take the robber by surprise, saving your friend. What do you do? What would you do instead?</label>
+				<textarea class="form-control" id="friendRobbed" name="friendRobbed" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio10" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio10" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio10" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer10" aria-expanded="false" aria-controls="showAnswer10">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer10">
+					<p><strong>Correct:</strong> Continue driving. You’re not initiated into the situation. Also, even though your friend radioed you asking you for help, it would be terrible roleplay to just hit the robber.<br><strong>Incorrect:</strong> Run them over because my friend told me about it and knocking him down with my car would be a great way to incapacitate him.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 11 QUESTION 11 -->
+		 
+		 <div class="form-group">
+			<label for="friendArrested">You’re driving into Dartmouth, and you ask your friend over radio where they are. They’re talking on the radio, but not to you. You hear them ask an LEO what the problem is. You then see your friend — sure enough — pulled over by deputies, so you ask over the radio if they need help. They say yes, so you get out of your car and shoot the deputies. Did you do anything wrong?</label>
+				<textarea class="form-control" id="friendArrested" name="friendArrested" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio11" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio11" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio11" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer11" aria-expanded="false" aria-controls="showAnswer11">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer11">
+					<p><strong>Correct:</strong> Yes. You did not initiate with the officer and failed to keep our elite roleplay in mind.<br><strong>Incorrect:</strong> No.</p>
+				</div>
+		 </div>
+		 
+		  <!-- 12 QUESTION 12 -->
+		 
+		 <div class="form-group">
+			<label for="rageQuit">You were killed by someone who RDM’d you. You force-close your game out of frustration and report that person on the forums. Did you do anything wrong?</label>
+				<textarea class="form-control" id="rageQuit" name="rageQuit" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio12" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio12" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio12" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer12" aria-expanded="false" aria-controls="showAnswer12">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer12">
+					<p><strong>Correct:</strong> You force closed (ALT+F4) your game, which denies RP for medics.<br><strong>Incorrect:</strong> Nothing I left the game to file a complaint.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 13 QUESTION 13 -->
+		 
+		 <div class="form-group">
+			<label for="greenViolate">Explain what a green zone violation (GZV) would be. Give me an example of a hostile act in a green zone that would not be considered a green zone violation.</label>
+				<textarea class="form-control" id="greenViolate" name="greenViolate" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio13" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio13" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio13" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer13" aria-expanded="false" aria-controls="showAnswer13">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer13">
+					<p><strong>Correct:</strong> GZV — committing crime inside a green zone. (Stealing cop cars, killing civilians). Trolling within a Green zone. (Yelling, being disruptive to roleplay.) Not considered a GZV — running into the greenzone after initiation has started outside of the greenzone.<br><strong>Incorrect:</strong> Use your judgement.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 14 QUESTION 14 -->
+		 
+		 <div class="form-group">
+			<label for="combatSpam">You see on the bottom left of your screen that one of your good friends has just logged on. You start driving towards the Union City spawn to pick them up. What did you do wrong?</label>
+				<textarea class="form-control" id="combatSpam" name="combatSpam" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio14" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio14" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio14" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer14" aria-expanded="false" aria-controls="showAnswer14">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer14">
+					<p><strong>Correct:</strong> Metagamed by using side chat to my advantage.<br><strong>Incorrect:</strong> Nothing I saw my friend log on the game.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 15 QUESTION 15 -->
+		 
+		 <div class="form-group">
+			<label for="deputyPatrol">An unarmed deputy has been patrolling the streets of Union City on foot for the last few minutes. You haven't had an issue with the deputy, but you do notice that he is now handcuffing your friend with no proper evidence. What would you do?</label>
+				<textarea class="form-control" id="deputyPatrol" name="deputyPatrol" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio15" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio15" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio15" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer15" aria-expanded="false" aria-controls="showAnswer15">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer15">
+					<p><strong>Correct:</strong> Proper initiation. Literally anything.<br><strong>Incorrect:</strong> Shoot the officer without a word saving my friend and gallop off into the sunset on our mystical unicorn steed that farts <span style="color:red;">r</span><span style="color:orange;">a</span><span style="color:#bbbb00;">i</span><span style="color:green;">n</span><span style="color:blue;">b</span><span style="color:purple;">o</span><span style="color:red;">w</span><span style="color:orange;">s</span>
+					.</p>
+				</div>
+		 </div>
+		 
+		  <!-- 16 QUESTION 16 -->
+		 
+		 <div class="form-group">
+			<label for="oocMention">What would your character do if someone mentions something out-of-character while you’re in the server, like "Have you tried driving this in first-person?" or "The admins just pulled me out of TFR?" How would you roleplay it out?</label>
+				<textarea class="form-control" id="oocMention" name="oocMention" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio16" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio16" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio16" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer16" aria-expanded="false" aria-controls="showAnswer16">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer16">
+					<p><strong>Correct:</strong> Act like they’re crazy; try to keep the roleplay going; not call them out on it in order to keep the roleplay going.<br><strong>Incorrect:</strong> Interacting with them OOC.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 17 QUESTION 17 -->
+		 
+		 <div class="form-group">
+			<label for="tonySoprano">Your friends are hanging out at the local bar, and they call you over the radio to tell you to join them. You make your way up there, and you see Italian men in suits everywhere with tommy guns. It looks like the scene is pretty locked down, and your friends are being held hostage inside by these members of the Mafia. How does your character react?</label>
+				<textarea class="form-control" id="tonySoprano" name="tonySoprano" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio17" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio17" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio17" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer17" aria-expanded="false" aria-controls="showAnswer17">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer17">
+					<p><strong>Correct:</strong> Anything that initiates you into the situation. You can't go in guns blazing because you are not initiated. Valuing your friends' lives, talking things out.<br><strong>Incorrect:</strong> Start firing into the bar. Anything that wouldn't be considered elite RP.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 18 QUESTION 18 -->
+		 
+		 <div class="form-group">
+			<label for="quickCash">You wake up one day and decide you're tired of running oil to earn a living, so you start robbing gas stations and people transporting goods to make some quick cash. Why is or isn't this allowed?</label>
+				<textarea class="form-control" id="quickCash" name="quickCash" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio18" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio18" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio18" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer18" aria-expanded="false" aria-controls="showAnswer18">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer18">
+					<p><strong>Correct:</strong> It isn't. You need a roleplay reason to start doing crime.<br><strong>Incorrect:</strong> Because you're roleplaying.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 19 QUESTION 19 -->
+		 
+		 <div class="form-group">
+			<label for="failHandcuff">Your friend radios to you that they're being processed at the Sheriff's Department, and they're about to be transported to the jail. What are they doing wrong?</label>
+				<textarea class="form-control" id="failHandcuff" name="failHandcuff" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio19" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio19" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio19" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer19" aria-expanded="false" aria-controls="showAnswer19">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer19">
+					<p><strong>Correct:</strong> They cannot talk on their radio while restrained.<br><strong>Incorrect:</strong> Go and save him.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 20 QUESTION 20 -->
+		 
+		 <div class="form-group">
+			<label for="stopOrDie">You have your gun out and pointed at a driver coming down the road. You tell them to stop the car or die, and they continue to drive. You then shoot them and kill them for disobeying your orders. Who would be the person to get reported: you or the person in the car? Why is that?</label>
+				<textarea class="form-control" id="stopOrDie" name="stopOrDie" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio20" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio20" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio20" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer20" aria-expanded="false" aria-controls="showAnswer20">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer20">
+					<p><strong>Correct:</strong> You. “Stop or die” is not good enough initiation.<br><strong>Incorrect:</strong> Him, because he didn’t value his life OR No one because I told him to stop and he didn’t.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 21 QUESTION 21 -->
+		 
+		 <div class="form-group">
+			<label for="reportGovt">Your friend is ranting over the radio about someone that just shot in his direction. He says he's going to "report them to the government." What are they doing wrong? What are they implying?</label>
+				<textarea class="form-control" id="reportGovt" name="reportGovt" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio21" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio21" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio21" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer21" aria-expanded="false" aria-controls="showAnswer21">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer21">
+					<p><strong>Correct:</strong> By using the phrase "government," he is implying he is going to do something out of character and in doing so went OOC himself.<br><strong>Incorrect:</strong> The person did nothing wrong those phrases are okay in RP.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 22 QUESTION 22 -->
+		 
+		 <div class="form-group">
+			<label for="diamondMining">You’re mining diamonds with a new resident of Kelley’s Island. They’re trying to figure out how to mine. How do you explain it to them?</label>
+				<textarea class="form-control" id="diamondMining" name="diamondMining" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio22" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio22" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio22" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer22" aria-expanded="false" aria-controls="showAnswer22">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer22">
+					<p><strong>Correct:</strong> ANYTHING creative. Or nothing at all, because players should know all of the controls before entering the servers.<br><strong>Incorrect:</strong> Anything with “if your mind was keyboard,” “press … in your mind,” etc.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 23 QUESTION 23 -->
+		 
+		 <div class="form-group">
+			<label for="copBaiting">You're driving around one day, bored, and you decide to start speeding along all the highways looking for deputies to chase you. They do, for a while, but then they disengage and stop following you. Who would be reported for fail roleplay: the deputies or you?</label>
+				<textarea class="form-control" id="copBaiting" name="copBaiting" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio23" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio23" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio23" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer23" aria-expanded="false" aria-controls="showAnswer23">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer23">
+					<p><strong>Correct:</strong> You. You can't just bait LEOs because you're bored.<br><strong>Incorrect:</strong> The deputies. They stopped following and that wouldn't happen in real life.</p>
+				</div>
+		 </div>
+		 
+		 <!-- 24 QUESTION 24 -->
+		 
+		 <div class="form-group">
+			<label for="redLight">The island is full of stoplights that actually work server-side. Is it fail roleplay to constantly disregard them?</label>
+				<textarea class="form-control" id="redLight" name="redLight" rows="2"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio24" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio24" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-radio24" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 		<button class="btn btn-primary detail-collapse guidelines-btn" type="button" data-toggle="collapse" data-target="#showAnswer24" aria-expanded="false" aria-controls="showAnswer24">
+					Show Guidelines
+				</button>
+				<div class="collapse guidelines" id="showAnswer24">
+					<p><strong>Correct:</strong> Yes. In real life, it doesn't matter what you're doing; even criminals follow traffic laws to try and lay low.<br><strong>Incorrect:</strong> No.</p>
+				</div>
+		 </div>
+		 
+		 <!-- START ROLEPLAY QUESTIONS -->
+
+		<h2>Roleplay Questions</h2>
+		<br>
+		<div class="alert alert-info-gray" role="alert">Look for creativity and effort! Do they want to RP? Were they creative in their response? Pick two questions using the buttons below.<br><br><strong>Instructions:</strong> Click "Generate Question" to randomly generate one of the RP questions. Click "Choose Question" to set that as the RP question. You can generate questions as many times as you want until you choose one.</div>
+		
+		<!-- Buttons to Generate RP Questions -->
+			<div class="row">
+				<div class="col-sm-6 text-center">
+					<button class="btn btn-success btn-lg rp-btn" type="button" id="rpGenerate" onclick="selectQuestion();">Generate Question</button>
+				</div>
+				<div class="col-sm-6 text-center">
+					<button class="btn btn-warning btn-lg rp-btn" type="button" id="rpChoose" onclick="appendQuestion();">Choose Question</button>
+				</div>
+			</div>
+			
+			<div class="alert alert-success question-gen" role="alert" id="resultAlert" style="display:none;"><p id="resultQuestion"></p></div>
+			
+		 <!-- RP QUESTION 1 -->
+		 
+		 <div class="form-group">
+			<label for="roleplay1" id="roleplay1-label">Roleplay Question #1</label>
+				<textarea class="form-control" id="roleplay1" name="roleplay1" rows="3"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-rp1" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-rp1" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-rp1" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 </div>
+		 
+		 <!-- RP QUESTION 2 -->
+		 
+		 <div class="form-group">
+			<label for="roleplay2" id="roleplay2-label">Roleplay Question #2</label>
+				<textarea class="form-control" id="roleplay2" name="roleplay2" rows="3"></textarea>
+				<!-- Scoring Radio Buttons -->
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="grade-label">Grade:</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-rp2" value="correct"> <span style="color:green;">Correct</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-rp2" value="incorrect"> <span style="color:red;">Incorrect</span>
+								</label>
+								<label class="form-check-inline">
+									<input class="form-check-input" type="radio" name="grade-rp2" value="partial"> <span style="color:orange;">Partial Credit</span>
+								</label>
+						</div>
+					</div>
+		 </div>
+
+		 <!-- START AGREEMENTS SECTION -->
+
+		<h2>Agreements</h2>
+		<br>
+		<div class="alert alert-info-gray" role="alert">Make sure the person you're interviewing agrees to all of the following and check off each one as you ask.</div>
+
+		<!-- Agreement 1 -->
+		<div class="form-group row">
+      		<div class="col-sm-1 offset-sm-1">
+      			<div class="form-check">
+      			<input class="form-check-input agreement-check" type="checkbox" name="agreement1"> 
+      			</div>
+      		</div>
+      		</label>
+      			<div class="col-sm-10">
+          			<label class="form-check-label agreement-label">
+            			Do you agree that you have read and understood all of our rules?
+          			</label>
+          		</div>
+        </div>
+
+        <!-- Agreement 2 -->
+		<div class="form-group row">
+      		<div class="col-sm-1 offset-sm-1">
+      			<div class="form-check">
+      			<input class="form-check-input agreement-check" type="checkbox" name="agreement2"> 
+      			</div>
+      		</div>
+      		</label>
+      			<div class="col-sm-10">
+          			<label class="form-check-label agreement-label">
+            			Do you understand that you are to respect all the members of our community, no matter how you feel about them?
+          			</label>
+          		</div>
+        </div>
+
+        <!-- Agreement 3 -->
+		<div class="form-group row">
+      		<div class="col-sm-1 offset-sm-1">
+      			<div class="form-check">
+      			<input class="form-check-input agreement-check" type="checkbox" name="agreement3"> 
+      			</div>
+      		</div>
+      		</label>
+      			<div class="col-sm-10">
+          			<label class="form-check-label agreement-label">
+            			Do you understand that disrespecting members, including staff, anywhere on the website or TeamSpeak is not allowed?
+          			</label>
+          		</div>
+        </div>
+
+        <!-- Agreement 4 -->
+		<div class="form-group row">
+      		<div class="col-sm-1 offset-sm-1">
+      			<div class="form-check">
+      			<input class="form-check-input agreement-check" type="checkbox" name="agreement4"> 
+      			</div>
+      		</div>
+      		</label>
+      			<div class="col-sm-10">
+          			<label class="form-check-label agreement-label">
+            			Do you understand that harassment, homophobia, sexism, racism, and very abusive language is not permitted, in- or out-of-character?
+          			</label>
+          		</div>
+        </div>
+
+        <!-- Agreement 5 -->
+		<div class="form-group row">
+      		<div class="col-sm-1 offset-sm-1">
+      			<div class="form-check">
+      			<input class="form-check-input agreement-check" type="checkbox" name="agreement5"> 
+      			</div>
+      		</div>
+      		</label>
+      			<div class="col-sm-10">
+          			<label class="form-check-label agreement-label">
+            			Do you understand that this community is heavily involved in roleplay and any out of character will not be tolerated except on the Out of Character Island?
+          			</label>
+          		</div>
+        </div>
+
+        <!-- Agreement 6 -->
+		<div class="form-group row">
+      		<div class="col-sm-1 offset-sm-1">
+      			<div class="form-check">
+      			<input class="form-check-input agreement-check" type="checkbox" name="agreement6"> 
+      			</div>
+      		</div>
+      		</label>
+      			<div class="col-sm-10">
+          			<label class="form-check-label agreement-label">
+            			Do you understand that you may not be spoken to before being issued a ban?
+          			</label>
+          		</div>
+        </div>
+
+        <!-- Agreement 7 -->
+		<div class="form-group row">
+      		<div class="col-sm-1 offset-sm-1">
+      			<div class="form-check">
+      			<input class="form-check-input agreement-check" type="checkbox" name="agreement7"> 
+      			</div>
+      		</div>
+      		</label>
+      			<div class="col-sm-10">
+          			<label class="form-check-label agreement-label">
+            			Do you understand that the administrators have the final say in all matters?
+          			</label>
+          		</div>
+        </div>
+
+        <!-- START GRADING TOOL -->
+
+		<h2>Automatic Grader</h2>
+		<br>
+		<div class="alert alert-info-gray" role="alert">Use this tool as a supplement to your own assessment of the interview.</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<button type="button" class="btn btn-primary submit-button btn-lg calc-score" onclick="startGrading();timeStampEnd();">Calculate Score</button>
+			</div>
+		</div>
+			<hr>
+		<div class="row grading-boxes">
+		<div class="col-sm-4">
+			<div class="card text-center">
+			  <h4 class="card-header">
+			    Correct
+			  </h4>
+			  <div class="card-block card-inverse card-success">
+			    <p class="score-count correct-count" id="count-correct">--</p>
+			  </div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="card text-center">
+			  <h4 class="card-header">
+			    Incorrect
+			  </h4>
+			  <div class="card-block card-inverse card-danger">
+			    <p class="score-count incorrect-count" id="count-incorrect">--</p>
+			  </div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="card text-center">
+			  <h4 class="card-header">
+			    Partial
+			  </h4>
+			  <div class="card-block card-inverse card-warning">
+			    <p class="score-count partial-count" id="count-partial">--</p>
+			  </div>
+			</div>
+		</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card card-outline-info text-center">
+				  <div class="card-block">
+				    <blockquote class="card-blockquote">
+				      <p class="score-final">Total score:</p>
+				      <p class="score-percent" id="percent-score">--%</p>
+				    </blockquote>
+				  </div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card card-outline-info text-center">
+				  <div class="card-block">
+				    <blockquote class="card-blockquote">
+				      <p class="score-final">Results:</p>
+				      <p class="score-percent passfail" id="passfailOutput" style="color:#000;">Pass/Fail</p>
+				    </blockquote>
+				  </div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Modal for logging interview on forums -->
+
+		<!-- Button trigger -->
+		<button type="button" class="btn btn-warning btn-lg forum-log" data-toggle="modal" data-target="#forumContent" onclick="generatePost();timeStampEnd();">
+  		Generate Thread for Forum
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="forumContent" tabindex="-1" role="dialog" aria-labelledby="forumContent">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="forumTitle"></h4>
+		      </div>
+		      <div class="modal-body" id="forumLog">
+		        
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- Setup hidden fields to hold value of RP questions for logging -->
+		<input type="hidden" name="rp1" id="rp1" value="roleplay question 1">
+		<input type="hidden" name="rp2" id="rp2" value="roleplay question 2">
+
+		<!-- Setup hidden fields for pass/fail and questions wrong -->
+		<input type="hidden" name="passorfail" id="passorfail" value="pass or fail">
+		<input type="hidden" name="qwrong" id="qwrong" value="questions wrong">
+		 
+		 <!-- SUBMIT ANSWERS -->
+  <br><br> 
+  	<hr>
+  <div class="row">
+		<div class="col-sm-8 offset-sm-2">
+			<button type="submit" class="btn btn-primary submit-button btn-lg">Submit Interview Results</button>
+		</div>
+	</div>
+</form>
+<br>
+
+
+      <footer class="footer">
+        <p>&copy; OrgoByte.com 2016 - Created by Leonard Moscowitz for the OrgoByte Gaming Community.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--  <script src="js/ie10-viewport-bug-workaround.js"></script> -->
+	
+	<!-- Activate Tooltips & Modals -->
+	<script>
+		$(document).ready(function () {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
+	
+	<!-- Custom Scripting for Collapse Buttons & Alert Close Buttons -->
+	<script>
+		$('.detail-alert').click(function(){
+				$(".alert").alert('close')
+			});
+		$('.detail-collapse').click(function(){
+			$(this).text(function(i,old){
+				return old=='Hide' ?  'Show Guidelines' : 'Hide';
+			});
+		});
+	</script>
+	
+	<!-- Scripting for Pagination -->
+	<script>
+	    $('#pagination').twbsPagination({
+			totalPages: 4,
+			visiblePages: 4,
+			onPageClick: function (event, page) {
+				$('#page-content').text('Page ' + page);
+			}
+		});
+	</script>
+  </body>
+</html>

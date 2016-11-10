@@ -1,0 +1,28 @@
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  include(/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php): failed to open stream: No such file or directory in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  include(): Failed opening '/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  set_error_handler() expects the argument (ErrorHandler::handleError) to be a valid callback in /home/softbeta15/public_html/lib/Cake/Core/Configure.php on line 443
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  include(/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php): failed to open stream: No such file or directory in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  include(): Failed opening '/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  set_exception_handler() expects the argument (ErrorHandler::handleException) to be a valid callback in /home/softbeta15/public_html/lib/Cake/Core/Configure.php on line 446
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  include(/var/www/repmgsys/lib/Cake/Log/CakeLog.php): failed to open stream: No such file or directory in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  include(): Failed opening '/var/www/repmgsys/lib/Cake/Log/CakeLog.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:41:45 UTC] PHP Fatal error:  Class 'CakeLog' not found in /home/softbeta15/public_html/app/Config/bootstrap.php on line 110
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  include(/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php): failed to open stream: No such file or directory in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:41:45 UTC] PHP Warning:  include(): Failed opening '/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:41:45 UTC] PHP Fatal error:  Class 'ErrorHandler' not found in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 918
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  include(/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php): failed to open stream: No such file or directory in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  include(): Failed opening '/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  set_error_handler() expects the argument (ErrorHandler::handleError) to be a valid callback in /home/softbeta15/public_html/lib/Cake/Core/Configure.php on line 443
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  include(/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php): failed to open stream: No such file or directory in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  include(): Failed opening '/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  set_exception_handler() expects the argument (ErrorHandler::handleException) to be a valid callback in /home/softbeta15/public_html/lib/Cake/Core/Configure.php on line 446
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  include(/var/www/repmgsys/lib/Cake/Log/CakeLog.php): failed to open stream: No such file or directory in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  include(): Failed opening '/var/www/repmgsys/lib/Cake/Log/CakeLog.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:42:23 UTC] PHP Fatal error:  Class 'CakeLog' not found in /home/softbeta15/public_html/app/Config/bootstrap.php on line 110
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  include(/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php): failed to open stream: No such file or directory in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:42:23 UTC] PHP Warning:  include(): Failed opening '/var/www/repmgsys/lib/Cake/Error/ErrorHandler.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 547
+[02-Apr-2015 06:42:23 UTC] PHP Fatal error:  Class 'ErrorHandler' not found in /home/softbeta15/public_html/lib/Cake/Core/App.php on line 918
+[02-Apr-2015 04:37:46 CST6CDT] PHP Fatal error:  Call to undefined function apache_get_modules() in /home/softbeta15/public_html/index.php on line 2
+[02-Apr-2015 04:38:26 CST6CDT] PHP Fatal error:  Call to undefined function apache_get_modules() in /home/softbeta15/public_html/index.php on line 2
+[02-Apr-2015 04:39:04 CST6CDT] PHP Fatal error:  Call to undefined function apache_get_modules() in /home/softbeta15/public_html/index.php on line 2
+[02-Apr-2015 04:43:39 CST6CDT] PHP Fatal error:  Call to undefined function apache_get_modules() in /home/softbeta15/public_html/index.php on line 2

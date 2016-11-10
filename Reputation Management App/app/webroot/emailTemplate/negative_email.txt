@@ -1,0 +1,11 @@
+<!--@subject Negative Email@-->
+<!--@vars customername@-->
+<table>
+      <tr>
+      <td>Dear $business_name,</td></tr>
+      <tr>
+       <td>You have got negative review by $cusotmername !</td></tr>
+      
+        
+        
+       </table>;

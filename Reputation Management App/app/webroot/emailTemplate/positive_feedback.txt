@@ -1,0 +1,17 @@
+<!--@subject Positive Feedback@-->
+<!--@vars customername, reviewurl, customeremail@-->
+<table>
+      <tr>
+      <td>Dear $cusotmername ,</td></tr>
+      <tr>
+       <td>Thank you so much for your valuable feedback!</td></tr>
+      <tr><td>We work hard to exceed our customers'expectations,We know you have many option so,</td></tr>
+        <tr><td>it is rewarding to hear that you are happy you selected MARKETING</td></tr>
+        <tr><td>would you be willing to share your comments with others who may be looking our service? if so, simply
+        choose you    <tr><td>would you be willing to share site from the links below,click and login then the submit your reviews. </td></tr>
+        <tr><td>Thank you ! We truely appreciate your review and your willingness to share your experience</td></tr>
+
+        <tr><td>Review Us on Google<a href={{google}}>Google</a></td></tr>
+        <tr><td>Review Us on Yelp<a href={{google}}>YELP</a></td></tr>
+        <tr><td>Review Us on Yellow pages<a href={{google}}>PAGE</a></td></tr>        
+</table>

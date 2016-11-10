@@ -1,0 +1,292 @@
+.start-button {
+	display: block;
+	margin: 0 auto;
+}
+
+.reset-button {
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.form-check-label, .form-check-input, .form-check-inline {
+	color: #000 !important;
+}
+
+label {
+	color: #0081c3;
+	font-weight: 500;
+}
+
+.grade-label {
+	color: #000 !important;
+	font-weight: 600;
+	font-size: 1.1em;
+}
+
+.tooltip-inner {
+    max-width: 450px;
+}
+
+.guidelines {
+	background: #f7f7f7;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.guidelines-btn {
+	margin-top: 10px;
+}
+
+.form-group {
+    /* margin-bottom: 3rem; */
+    margin-top: 2.2rem;
+}
+
+.container {
+	background: #f9f9f9;
+    border-radius: 10px;
+    border: #01a3f7 1px solid;
+    box-shadow: 2px 2px 10px #ccc;
+}
+
+body {
+	background: #ececec;
+}
+
+.submit-button,.calc-score,.forum-log {
+	margin: 0 auto;
+	display: block;
+}
+
+.calc-score {
+	margin-bottom: 10px;
+}
+
+.forum-log {
+	margin-top: 2rem;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.btn-primary {
+	background-color: #01a3f7;
+}
+
+.rp-btn {
+    margin-top: .5rem;
+}
+
+.question-gen {
+    margin: 2rem 0 0 0;
+}
+
+.question-gen p {
+	margin-bottom: 0px !important;
+	font-weight: 500;
+}
+
+.alert-info-gray {
+	background-color: #eceeef;
+    border-color: rgba(187, 187, 187, 0.25);
+    color: #2d2d2d;
+	text-align: center;
+    font-size: 1.2em;
+    box-shadow: 4px 4px 10px #ababab;
+}
+
+.stopwatch-controls {
+	text-align:center;
+    margin:0 auto;
+}
+
+.stopwatch {
+
+}
+
+.agreement-check {
+    margin: 0 auto;
+    align-self: center;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+.agreement-label {
+	vertical-align: middle;
+}
+/*
+@media (min-width: 544px) {
+.card-group {
+    display: table;
+    table-layout: fixed;
+    margin: 0 1rem;
+    width: 94%;
+    margin: 0 auto;
+	}
+}
+*/
+.score-count {
+	font-size: 3rem;
+	font-weight: 600;
+	color: #fff;
+	text-align: center;
+}
+/*
+.correct-count {
+	color: green;
+}
+
+.incorrect-count {
+	color: red;
+}
+
+.partial-count {
+	color: orange;
+}
+*/
+.card-header {
+	margin-bottom: 0;
+}
+
+.grading-boxes .card-header {
+	text-align: center;
+}
+
+.grading-boxes {
+	margin-bottom: 2rem;
+}
+
+.score-final, .score-percent {
+	font-size: 2rem;
+}
+
+.score-percent {
+	font-weight: 600;
+}
+
+.passfail {
+	
+}
+
+.swFormat {
+	text-align: center;
+    border: none;
+    font-size: 2.5rem;
+    color: #3e3e3e;
+    box-shadow: none !important;
+}
+
+.card {
+	box-shadow: 3px 5px 8px #9c9c9c;
+    border-radius: .25rem;
+    border: 1px solid #00a0d0;
+}
+
+input[type=text], input[type=date], select, textarea {
+	box-shadow: 4px 4px 8px #cecece;
+}
+
+.form-group .row {
+	margin-top: 15px;
+}
+
+.card-timer {
+	box-shadow: 3px 5px 10px #c3c3c3;
+}
+
+h2 {
+	padding-top: 1.5rem;
+	color: #464646;
+}
+
+.lead {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.parsley-required {
+	list-style-type: none;
+    text-align: right;
+    color: red;
+    float: right;
+}
+
+.parsley-error {
+	border: red 2px solid;
+}
+
+.callout-orgo {
+	border-left-color: #01a3f7 !important;
+	box-shadow: 4px 4px 8px #cecece;
+	background-color: #fff;
+}
+
+/* Bootstrap Callouts */
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #e2e2e2;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #464646;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+
+.clearFormatting b {
+    background: rgba(0,0,0,0) !important;
+    color: inherit !important;
+}

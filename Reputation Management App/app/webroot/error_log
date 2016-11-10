@@ -1,0 +1,14 @@
+[05-Apr-2015 17:34:27 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/softbeta15/public_html/app/View/Dashboard/visibility.ctp on line 1155
+[05-Apr-2015 17:34:59 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/softbeta15/public_html/app/View/Dashboard/visibility.ctp on line 711
+[05-Apr-2015 17:35:18 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/softbeta15/public_html/app/View/Dashboard/visibility.ctp on line 709
+[05-Apr-2015 17:35:55 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/softbeta15/public_html/app/View/Dashboard/visibility.ctp on line 712
+[05-Apr-2015 17:38:12 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/softbeta15/public_html/app/View/Dashboard/visibility.ctp on line 690
+[06-Apr-2015 00:50:28 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/softbeta15/public_html/app/View/Dashboard/notification.ctp on line 95
+[06-Apr-2015 00:51:14 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/softbeta15/public_html/app/View/Dashboard/notification.ctp on line 95
+[06-Apr-2015 08:19:32 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/softbeta15/public_html/app/View/Dashboard/reporting.ctp on line 85
+[06-Apr-2015 08:22:48 UTC] PHP Fatal error:  require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '../dompdf/dompdf_config.inc.php' (include_path='/home/softbeta15/public_html/lib:.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/app/Controller/DashboardController.php on line 31
+[06-Apr-2015 08:34:44 UTC] PHP Fatal error:  require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '../dompdf/dompdf_config.inc.php' (include_path='/home/softbeta15/public_html/lib:.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/app/Controller/DashboardController.php on line 31
+[07-Apr-2015 03:09:55 UTC] PHP Parse error:  syntax error, unexpected '{', expecting ')' in /home/softbeta15/public_html/app/View/Dashboard/reporting.ctp on line 13
+[07-Apr-2015 03:10:46 UTC] PHP Parse error:  syntax error, unexpected 'style' (T_STRING), expecting ')' in /home/softbeta15/public_html/app/View/Dashboard/reporting.ctp on line 13
+[07-Apr-2015 03:11:13 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ')' in /home/softbeta15/public_html/app/View/Dashboard/reporting.ctp on line 13
+[07-Apr-2015 13:48:36 UTC] PHP Fatal error:  require_once(): Failed opening required '../dompdf/dompdf_config.inc.php' (include_path='/home/softbeta15/public_html/lib:.:/usr/lib/php:/usr/local/lib/php') in /home/softbeta15/public_html/app/Controller/DashboardController.php on line 31
