@@ -4,16 +4,4 @@ This is a collection of projects and some curated sample code snippets that I've
 
 ## Distribution
 
-This collection of projects are, for the most part, not ongoing projects. They've been posted for educational and reference purposes only. As this is open source, anyone is welcome to use code here based on the license parameters, however I'm merely pointing out that you probably wouldn't get much practical use out of it.
-
-## License
-
-MIT License
-
-Copyright (c) 2016 Marc Gale
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+This collection of projects are, for the most part, not ongoing projects. They've been posted for reference purposes only. 
